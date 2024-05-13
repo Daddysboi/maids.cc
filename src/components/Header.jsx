@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { Link } from "react-scroll";
 
-import { useScroll } from "../App";
+import { useScroll } from "../main";
 
 import Logo from "./Logo";
 import Button from "./Button";

@@ -1,16 +1,10 @@
-import { createContext, useContext, useState } from "react";
+import React from "react";
+import { RouterProvider } from "react-router-dom";
 
-export const scrollContext = createContext();
-export const useScroll = () => useContext(scrollContext);
+import { router } from "./Router";
 
 function App() {
-  const [action, setAction] = useState("Sign Up");
-
-  return (
-    <scrollContext.Provider value={{ action, setAction }}>
-      <div>Homepage</div>
-    </scrollContext.Provider>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

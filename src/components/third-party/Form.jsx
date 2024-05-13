@@ -3,7 +3,7 @@ import { IconBrandGoogle } from "@tabler/icons-react";
 import { Link } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 
-import { useScroll } from "../../App";
+import { useScroll } from "../../main";
 import { sendOtp } from "../../redux/features/registerSlice";
 
 import { Input } from "./input";
