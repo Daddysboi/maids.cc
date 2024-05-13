@@ -2,9 +2,6 @@ import React from "react";
 import { createContext, useContext, useState } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
-export const scrollContext = createContext();
-export const useScroll = () => useContext(scrollContext);
-
 // Pages
 import Home from "./pages/Home.jsx";
 import Dashboard from "./pages/dashboard/Dashboard.jsx";
@@ -124,6 +121,9 @@ const router = createBrowserRouter([
     ],
   },
 ]);
+
+export const scrollContext = createContext();
+export const useScroll = () => useContext(scrollContext);
 
 function App() {
   const [action, setAction] = useState("Sign Up");

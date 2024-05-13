@@ -9,7 +9,7 @@ import { Sparkles } from "../../components/ui/sparkles";
 import { Link } from "react-scroll";
 
 const Container = styled.section`
-  padding-top: ${(props) => props.paddingTop || "3rem"};
+  padding-top: ${(props) => props.paddingtop || "3rem"};
   padding-bottom: ${(props) => props.paddingBottom || "6rem"};
   text-align: center;
   color: #0f0f0f;
@@ -23,7 +23,7 @@ const Container = styled.section`
   @media only screen and (max-width: 800px) {
     padding-bottom: 1rem;
     margin-bottom: 1rem;
-    /* padding-top: ${(props) => props.mobilePaddingTop || "3rem"}; */
+    /* padding-top: ${(props) => props.mobilepaddingtop || "3rem"}; */
   }
 `;
 
@@ -118,9 +118,9 @@ const Hero = ({
   marginBottom,
   lineHeight,
   fontWeight,
-  paddingTop,
+  paddingtop,
   paddingBottom,
-  mobilePaddingTop,
+  mobilepaddingtop,
   isHero,
   hasCTA,
   lineHeightSub,
@@ -135,9 +135,9 @@ const Hero = ({
       data-aos-duration="1500"
       data-aos-delay="500"
       data-aos-offset="400"
-      paddingTop={paddingTop}
+      paddingtop={paddingtop}
       paddingBottom={paddingBottom}
-      mobilePaddingTop={mobilePaddingTop}
+      mobilepaddingtop={mobilepaddingtop}
       className={
         isHero && " relative dark:bg-grid-white/[0.2] bg-grid-black/[0.025]"
       }
@@ -178,7 +178,7 @@ const Hero = ({
             fontSize="1rem"
             text="Talk to us"
             display="other"
-            borderColor="transparent"
+            bordercolor="transparent"
             small
           />
 
@@ -196,9 +196,9 @@ const Hero = ({
               fontSize="1rem"
               display="grey"
               text="Start for free"
-              borderColor="#EBEBEB"
-              textColor="#0F0F0F"
-              hoverBg="#dbdbdb"
+              bordercolor="#EBEBEB"
+              textcolor="#0F0F0F"
+              hoverbg="#dbdbdb"
               small
             />
           </Link>

@@ -21,7 +21,7 @@ export const clientLinks = [
   },
 ];
 
-// TEACHERS LINKS
+// Maid LINKS
 export const maidLinks = [
   {
     title: "Dashboard",

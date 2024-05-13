@@ -30,16 +30,16 @@ const Button = styled.button`
   font-size: ${(props) => props.fontSize || "0.8rem"};
   font-weight: ${(props) => props.fontWeight || "400"};
   padding: ${(props) =>
-    props.small ? "0.5rem 1rem" : props.noPaddng ? "0" : "0.5rem 2rem"};
+    props.small ? "0.5rem 1rem" : props.nopaddng ? "0" : "0.5rem 2rem"};
   border-radius: 0.5rem;
-  color: ${(props) => props.textColor || "#fff"};
+  color: ${(props) => props.textcolor || "#fff"};
   border: ${(props) => props.border || ""};
   cursor: pointer;
   transition: all 0.3s ease;
 
   &:hover {
     /* background: transparent; */
-    background-color: ${(props) => props.hoverBg || "#4D4D4D"};
+    background-color: ${(props) => props.hoverbg || "#4D4D4D"};
   }
 
   ${(props) =>
@@ -74,11 +74,11 @@ const Children = styled.span`
 const AppButton = ({
   text,
   backgroundColor,
-  textColor,
+  textcolor,
   border,
   hoverColor,
   small,
-  noPaddng,
+  nopaddng,
   outline,
   disabled = false,
   type,
@@ -90,7 +90,7 @@ const AppButton = ({
   width,
   fontSize,
   fontWeight,
-  hoverBg,
+  hoverbg,
   id,
   className,
   children,
@@ -101,11 +101,11 @@ const AppButton = ({
       className={className}
       backgroundColor={backgroundColor}
       id={id}
-      textColor={textColor}
+      textcolor={textcolor}
       border={border}
       hoverColor={hoverColor}
-      small={small}
-      noPaddng={noPaddng}
+      small={small ? "true" : undefined}
+      nopaddng={nopaddng ? "true" : undefined}
       outline={outline}
       disabled={loading || disabled}
       type={type}
@@ -115,7 +115,7 @@ const AppButton = ({
       fontSize={fontSize}
       fontWeight={fontWeight}
       display={display}
-      hoverBg={hoverBg}
+      hoverbg={hoverbg}
       {...props}
     >
       <Children>
@@ -128,14 +128,21 @@ const AppButton = ({
 };
 
 AppButton.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   backgroundColor: PropTypes.string,
-  textColor: PropTypes.string,
-  borderColor: PropTypes.string,
+  textcolor: PropTypes.string,
+  bordercolor: PropTypes.string,
   hoverColor: PropTypes.string,
   small: PropTypes.bool,
   outline: PropTypes.bool,
-  type: PropTypes.oneOf(["default", "success", "danger", "info", "warning"]),
+  type: PropTypes.oneOf([
+    "default",
+    "success",
+    "danger",
+    "info",
+    "warning",
+    "submit",
+  ]),
   text: PropTypes.string,
   onClick: PropTypes.func,
   loading: PropTypes.bool,

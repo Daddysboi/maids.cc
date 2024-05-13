@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import { IconBrandGoogle } from "@tabler/icons-react";
 import { Link } from "react-router-dom";
@@ -78,10 +77,10 @@ export function SignupForm() {
           text="Sign Up"
           fontSize="1.2rem"
           display="none"
-          textColor={action === "Sign Up" ? "#000" : "#E6E8EC"}
-          noPaddng
+          textcolor={action === "Sign Up" ? "#000" : "#E6E8EC"}
+          nopaddng
           fontWeight="800"
-          hoverBg="transparent"
+          hoverbg="transparent"
           onClick={() => {
             setAction("Sign Up");
           }}
@@ -95,10 +94,10 @@ export function SignupForm() {
           text="Login"
           fontSize="1.2rem"
           display="none"
-          textColor={action === "Login" ? "#000" : "#E6E8EC"}
-          noPaddng
+          textcolor={action === "Login" ? "#000" : "#E6E8EC"}
+          nopaddng
           fontWeight="800"
-          hoverBg="transparent"
+          hoverbg="transparent"
           onClick={() => {
             setAction("Login");
           }}
@@ -138,7 +137,6 @@ export function SignupForm() {
             <Field
               as={Input}
               label="Email Address"
-              id="email"
               name="email"
               placeholder="projectmayhem@fc.com"
               type="email"
@@ -147,7 +145,6 @@ export function SignupForm() {
               as={Input}
               label="Password"
               name="password"
-              id="password"
               placeholder="••••••••"
               type="password"
             />
@@ -155,7 +152,6 @@ export function SignupForm() {
             {action === "Sign Up" && (
               <Field
                 as={Input}
-                id="password"
                 label="Confirm password"
                 placeholder="••••••••"
                 type="password"
@@ -192,7 +188,7 @@ export function SignupForm() {
             className=" relative group/btn flex space-x-2 items-center justify-start"
             display="none"
             type="submit"
-            hoverBg="none"
+            hoverbg="none"
             fontSize="1rem"
             border="1px solid #e8e8e8"
             width="100%"

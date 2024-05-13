@@ -158,8 +158,8 @@ const Header = () => {
                 fontSize="1rem"
                 text="Sign in"
                 display="none"
-                borderColor="transparent"
-                textColor="#0F0F0F"
+                bordercolor="transparent"
+                textcolor="#0F0F0F"
                 small
                 onClick={() => {
                   // setOpen(!open);
@@ -179,7 +179,7 @@ const Header = () => {
                 fontSize="1rem"
                 display="other"
                 text="Start for free"
-                borderColor="#0F0F0F"
+                bordercolor="#0F0F0F"
                 small
                 onClick={() => {
                   // setOpen(!open);
@@ -191,7 +191,7 @@ const Header = () => {
       ) : (
         <PcLinks>
           {links?.map(({ path, page, id }, i) => (
-            <ScrollTo to={id}>
+            <ScrollTo key={i} to={id}>
               <StyledLink key={i} to={path}>
                 {page}
               </StyledLink>
@@ -213,9 +213,9 @@ const Header = () => {
               fontSize="1rem"
               text="Sign in"
               display="none"
-              borderColor="transparent"
-              textColor="#0F0F0F"
-              hoverBg="#dbdbdb"
+              bordercolor="transparent"
+              textcolor="#0F0F0F"
+              hoverbg="#dbdbdb"
               small
             />
           </ScrollTo>
@@ -230,7 +230,7 @@ const Header = () => {
               fontSize="1rem"
               display="other"
               text="Start for free"
-              borderColor="#0F0F0F"
+              bordercolor="#0F0F0F"
               small
             />
           </ScrollTo>
@@ -244,16 +244,13 @@ export default Header;
 
 export const ScrollTo = ({ children, to, onclick }) => {
   return (
-    <Link
-      to={to}
-      activeClass="active"
-      spy={true}
-      smooth={true}
-      offset={-150}
-      duration={2000}
-      onClick={onclick}
+    <div
+      onClick={() => {
+        document.getElementById(to)?.scrollIntoView({ behavior: "smooth" });
+        if (onclick) onclick();
+      }}
     >
       {children}
-    </Link>
+    </div>
   );
 };
