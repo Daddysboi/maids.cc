@@ -12,7 +12,6 @@ import ErrorBoundary from "./ErrorBoundary.jsx";
 import { primaryColors } from "./assets/Colors.jsx";
 
 // Pages
-import Home from "./pages/Home.jsx";
 import Dashboard from "./pages/dashboard/Dashboard.jsx";
 import Login from "./pages/Login.jsx";
 import SignUp from "./pages/SignUp.jsx";
