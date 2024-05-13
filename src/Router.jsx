@@ -37,15 +37,15 @@ export const router = createBrowserRouter(
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
       </Route>
-      <Route element={<DashboardLayout />}>
-        <Route path="dashboard" element={<Dashboard />} />
+      <Route path="/dashboard" element={<DashboardLayout />}>
+        <Route path="" element={<Dashboard />} />
         <Route path="settings" element={<Settings />} />
         <Route element={<AdminProtectedRoutes />}>
           <Route path="admin/maids" element={<AllMaids />} />
           <Route path="admin/maids/:id" element={<SingleUser />} />
 
           <Route path="admin/clients" element={<AllClients />} />
-          <Route path="admin/clients/:id" element={<AllClients />} />
+          <Route path="admin/clients/:id" element={<SingleUser />} />
           <Route path="admin/services" element={<AllServices />} />
         </Route>
         <Route element={<MaidProtectedRoutes />}></Route>
