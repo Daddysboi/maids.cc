@@ -36,6 +36,9 @@ const Wrapper = styled.div`
   @media only screen and (min-width: 601px) and (max-width: 1200px) {
     padding-inline: 17% 0.5rem;
   }
+  @media only screen and (min-width: 1201px) {
+    padding-inline: 17% 0.5rem;
+  }
 `;
 
 const Container = styled.div`

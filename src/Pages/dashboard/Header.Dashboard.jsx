@@ -42,6 +42,9 @@ const Left = styled.div`
   @media only screen and (min-width: 601px) and (max-width: 1200px) {
     width: 17%;
   }
+  @media only screen and (min-width: 1201px) {
+    width: 17%;
+  }
 `;
 
 const Right = styled.div`
