@@ -37,19 +37,19 @@ export const router = createBrowserRouter(
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
       </Route>
-      <Route path="/dashboard" element={<DashboardLayout />}>
-        <Route element={<Dashboard />} />
+      <Route element={<DashboardLayout />}>
+        <Route path="dashboard" element={<Dashboard />} />
         <Route path="settings" element={<Settings />} />
-        <Route path="admin" element={<AdminProtectedRoutes />}>
-          <Route path="maids" element={<AllMaids />} />
-          <Route path="maids/:id" element={<SingleUser />} />
+        <Route element={<AdminProtectedRoutes />}>
+          <Route path="admin/maids" element={<AllMaids />} />
+          <Route path="admin/maids/:id" element={<SingleUser />} />
 
-          <Route path="clients" element={<AllClients />} />
-          <Route path="clients/:id" element={<AllClients />} />
-          <Route path="services" element={<AllServices />} />
+          <Route path="admin/clients" element={<AllClients />} />
+          <Route path="admin/clients/:id" element={<AllClients />} />
+          <Route path="admin/services" element={<AllServices />} />
         </Route>
-        <Route path="maid" element={<MaidProtectedRoutes />}></Route>
-        <Route path="clients" element={<ClientProtectedRoutes />}></Route>
+        <Route element={<MaidProtectedRoutes />}></Route>
+        <Route element={<ClientProtectedRoutes />}></Route>
       </Route>
       <Route path="/" element={<RootLayout />}>
         <Route path="/" element={<Home />} />
