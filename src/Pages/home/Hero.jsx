@@ -9,7 +9,7 @@ import { Sparkles } from "../../components/ui/sparkles";
 import { Link } from "react-scroll";
 
 const Container = styled.section`
-  padding-top: 7rem;
+  padding-top: ${(props) => props.paddingtop || "3rem"};
   padding-bottom: ${(props) => props.paddingBottom || "6rem"};
   text-align: center;
   color: #0f0f0f;
@@ -23,7 +23,7 @@ const Container = styled.section`
   @media only screen and (max-width: 800px) {
     padding-bottom: 1rem;
     margin-bottom: 1rem;
-  /
+    /* padding-top: ${(props) => props.mobilepaddingtop || "3rem"}; */
   }
 `;
 
@@ -118,6 +118,7 @@ const Hero = ({
   marginBottom,
   lineHeight,
   fontWeight,
+  paddingtop,
   paddingBottom,
   mobilepaddingtop,
   isHero,
@@ -134,6 +135,7 @@ const Hero = ({
       data-aos-duration="1500"
       data-aos-delay="500"
       data-aos-offset="400"
+      paddingtop={paddingtop}
       paddingBottom={paddingBottom}
       mobilepaddingtop={mobilepaddingtop}
       className={
