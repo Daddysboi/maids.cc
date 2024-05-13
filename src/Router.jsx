@@ -2,7 +2,7 @@ import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 
 // Pages
-import Homepage from "./pages/Homepage.jsx";
+import Home from "./pages/Home.jsx";
 import Dashboard from "./pages/dashboard/Dashboard.jsx";
 import Login from "./pages/Login.jsx";
 import SignUp from "./pages/SignUp.jsx";
@@ -37,14 +37,9 @@ export const router = createBrowserRouter([
         children: [
           {
             path: "/",
-            element: <Homepage />,
+            element: <Home />,
           },
         ],
-      },
-
-      {
-        path: "*",
-        element: <Error404 />,
       },
 
       // Auth
@@ -117,6 +112,10 @@ export const router = createBrowserRouter([
             children: [],
           },
         ],
+      },
+      {
+        path: "*",
+        element: <Error404 />,
       },
     ],
   },
