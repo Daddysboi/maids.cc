@@ -2,7 +2,6 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
-  RouterProvider,
 } from "react-router-dom";
 
 // Pages
@@ -31,7 +30,7 @@ import AllMaids from "./pages/dashboard/admin/AllMaids.jsx";
 import Settings from "./pages/dashboard/settings/Settings.jsx";
 import SingleUser from "./pages/dashboard/admin/SingleUser.jsx";
 
-const router = createBrowserRouter(
+export const router = createBrowserRouter(
   createRoutesFromElements(
     <Route element={<GuardLayout />}>
       <Route element={<AuthLayout />}>
