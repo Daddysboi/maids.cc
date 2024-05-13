@@ -1,21 +1,20 @@
 import React from "react";
 import { Navigate, Outlet } from "react-router-dom";
-
-import { useAppSelector } from "../../redux/hooks";
 import { getPage } from "../../utils/helpers";
+import { useAppSelector } from "../../redux/hooks";
 
-const AdminProtectedRoutes = () => {
+const ClientProtectedRoute = () => {
   const currentPage = getPage();
   const { user } = useAppSelector((state) => state.user);
 
-  if (user?.role === "admin") {
-    if (currentPage === "admin") {
+  if (user?.role === "client") {
+    if (currentPage === "client") {
       return <Navigate to={"/dashboard"} />;
     }
     return <Outlet />;
   } else {
-    // return <Navigate to={"/"} replace />;
+    return <Navigate to={"/"} replace />;
   }
 };
 
-export default AdminProtectedRoutes;
+export default ClientProtectedRoute;

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import Divider from "./Divider";
-import Logo from "../assets/Logo/primy-logo.png";
+import Logo from "../assets/Logo/maids-logo.png";
 
 const Card = styled.div`
   border-radius: 5px;

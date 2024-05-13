@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,17 +11,13 @@ import { useAppDispatch } from "../redux/hooks";
 import { logout } from "../redux/features/loginSlice";
 import { useAppSelector } from "../redux/hooks";
 
-import {
-  adminLinks,
-  studentLinks,
-  teacherLinks,
-} from "../pages/dashboard/Links";
+import { adminLinks } from "../pages/dashboard/Links";
 import { checkInLocation } from "../utils/helpers";
 import DashboardHeader from "../pages/dashboard/Header.Dashboard";
 import { primaryColors } from "../assets/Colors";
 import { BottomGradient } from "../components/third-party/Form";
 
-import library from "../assets/images/library.png";
+import library from "../assets/images/library.webp";
 import Logo from "../components/Logo";
 
 const Wrapper = styled.div`
@@ -29,6 +25,17 @@ const Wrapper = styled.div`
   padding: 5rem 0 3rem 20%;
   min-height: 100vh;
   min-width: 100vw;
+  @media only screen and (min-width: 320px) and (max-width: 480px) {
+    padding-inline: ${(props) => (props.open ? "32% 0.5rem" : "3rem")};
+  }
+
+  @media only screen and (min-width: 481px) and (max-width: 600px) {
+    padding-inline: 25% 0.5rem;
+  }
+
+  @media only screen and (min-width: 601px) and (max-width: 1200px) {
+    padding-inline: 17% 0.5rem;
+  }
 `;
 
 const Container = styled.div`
@@ -61,6 +68,23 @@ const Aside = styled.aside`
   bottom: 0;
   z-index: 2;
   padding-bottom: 1rem;
+  // Mobile devices
+  @media only screen and (min-width: 320px) and (max-width: 480px) {
+    width: 5.8rem;
+    padding-left: 0.2rem;
+    display: ${(props) => (props.open ? "block" : "none")};
+  }
+
+  // iPads, Tablets
+  @media only screen and (min-width: 481px) and (max-width: 940px) {
+    width: 6rem;
+    padding-left: 0.5rem;
+  }
+  // iPads, Tablets
+  @media only screen and (min-width: 941px) and (max-width: 1200px) {
+    width: 9rem;
+    padding-left: 0.5rem;
+  }
 `;
 
 const Button = styled.button`
@@ -72,16 +96,26 @@ const Button = styled.button`
   cursor: pointer;
   margin-left: ${({ active }) => (active ? "0.5rem" : "")};
   transition: background-color 0.2s ease;
-  background-color: ${({ active }) =>
-    active ? `${primaryColors.LightPurple}` : "transparent"};
+  background-color: ${({ active }) => (active ? "#0d214a" : "transparent")};
   color: ${({ active }) =>
     active ? `${primaryColors.Purple}` : `${primaryColors.LightPurple}`};
   font-weight: ${({ active }) => (active ? "bold" : "normal")};
   width: 7rem;
   &:hover {
-    background-color: #925aed;
+    /* background-color: "#adc2eb"; */
     color: ${primaryColors.LightPurple};
-    width: 7rem;
+    /* width: 7rem; */
+  }
+
+  // Mobile devices
+  @media only screen and (min-width: 320px) and (max-width: 480px) {
+    max-width: 4.3rem;
+    padding-inline: 0.3rem;
+    margin-left: 0;
+  }
+  // iPads, Tablets
+  @media only screen and (min-width: 481px) and (max-width: 1160px) {
+    width: 4.5rem;
   }
 `;
 
@@ -90,11 +124,15 @@ const SubButton = styled(Button)`
 `;
 
 const SideBarImg = styled.img`
-  height: 8rem;
+  margin-top: 6rem;
+  height: 4rem;
 `;
 
 const DashBoardLayout = () => {
   const [showSublinks, setShowSublinks] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [mobile, setMobile] = useState(false);
+
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
@@ -118,32 +156,23 @@ const DashBoardLayout = () => {
       navigate(url);
     }
   };
-
-  let links;
-
-  switch (user?.role) {
-    case "student":
-      links = studentLinks;
-      break;
-    case "teacher":
-      links = teacherLinks;
-      break;
-    case "admin":
-      links = adminLinks;
-      break;
-    default:
-      links = [];
-  }
+  const handleToggle = () => {
+    setOpen((prev) => !prev);
+  };
 
   return (
-    <Wrapper>
-      <DashboardHeader />
+    <Wrapper open={open}>
+      <DashboardHeader
+        open={open}
+        setOpen={setOpen}
+        handleToggle={handleToggle}
+      />
 
       <Container>
-        <Aside>
-          <Logo />
+        <Aside open={open}>
+          <Logo isDashBoard />
           <Links>
-            {links.map((sidebar, index) => (
+            {adminLinks.map((sidebar, index) => (
               <div key={index}>
                 <Button
                   className={"relative group/btn "}
@@ -182,7 +211,6 @@ const DashBoardLayout = () => {
             <SideBarImg src={library} alt="library" />
           </div>
         </Aside>
-
         <Outlet />
       </Container>
     </Wrapper>

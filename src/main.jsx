@@ -1,10 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import ReactDOM from "react-dom/client";
-import { ToastContainer } from "react-toastify";
 import { Provider } from "react-redux";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import "react-toastify/dist/ReactToastify.css";
 import "./index.css";
 
 import App from "./App.jsx";
@@ -21,18 +18,13 @@ const StyledApp = styled.section`
   max-width: 100%;
 `;
 
-const queryClient = new QueryClient();
-
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ErrorBoundary>
       <Provider store={store}>
-        <QueryClientProvider client={queryClient}>
-          <StyledApp>
-            <App />
-          </StyledApp>
-          <ToastContainer />
-        </QueryClientProvider>
+        <StyledApp>
+          <App />
+        </StyledApp>
       </Provider>
     </ErrorBoundary>
   </React.StrictMode>

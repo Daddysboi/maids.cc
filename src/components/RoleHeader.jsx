@@ -13,15 +13,17 @@ const Container = styled.div`
   align-items: flex-end;
   width: 70vw;
   gap: 1rem;
+  @media only screen and (min-width: 320px) and (max-width: 480px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `;
 
 const options = [
-  { value: "class", label: "Class" },
   { value: "type", label: "Type" },
-  { value: "subject", label: "Subject" },
-  { value: "name", label: "Name" },
-  // text === "students" && { value: "grade", label: "Grade" }, //check this
+  { value: "service", label: "Service" },
 ];
+
 const RoleHeader = ({
   text,
   onClick,
@@ -34,25 +36,20 @@ const RoleHeader = ({
 }) => {
   const dispatch = useAppDispatch();
 
-  const sortUsers = (options) => {
+  const sortUsers = (option) => {
     if (!users) return;
 
     const sortedUsers = [...users].sort((a, b) => {
-      switch (options.value) {
-        case "class":
-          return a.class.localeCompare(b.class);
+      switch (option) {
         case "type":
-          return a.type.localeCompare(b.type);
-        case "subject":
-          return a.subject.localeCompare(b.subject);
-        case "name":
-          return a.name.localeCompare(b.name);
-        case "grade":
-          return a.grade - b.grade;
+          return a.first_name.localeCompare(b.first_name);
+        case "service":
+          return a.last_name.localeCompare(b.last_name);
         default:
           return 0;
       }
     });
+    console.log(sortedUsers);
     dispatch(setUsers(sortedUsers));
   };
 

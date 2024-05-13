@@ -12,8 +12,9 @@ const Card = styled.div`
   display: flex;
   gap: 1rem;
   @media only screen and (min-width: 320px) and (max-width: 480px) {
-    width: 5rem;
+    max-width: 95%;
     padding-bottom: 0.5rem;
+    overflow-x: hidden;
   }
 `;
 

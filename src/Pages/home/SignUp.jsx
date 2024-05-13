@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import { SignupForm } from "../../components/third-party/Form";
-import femaleStudent from "../../assets/images/friends.jpg";
+import femaleStudent from "../../assets/images/friends.webp";
 
 const Container = styled.section`
   /* display: flex; */

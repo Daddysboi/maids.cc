@@ -80,29 +80,29 @@ const DaysLeft = styled.div`
 
 const details = [
   {
-    value: 176,
-    heading: "Total Maids",
+    value: "176",
+    heading: "My Students",
     rate: "+0.5%",
     subtext: "more than last year",
     img: `${studentIcon}`,
   },
   {
-    value: 69,
-    heading: "Total Clients",
+    value: "69",
+    heading: "Total Teachers",
     rate: "-3%",
     subtext: "less than last year",
     img: `${studentIcon}`,
   },
   {
-    value: 17,
-    heading: "Services",
+    value: "17",
+    heading: "Events",
     rate: "6%",
     subtext: "more than last year",
     img: `${studentIcon}`,
   },
   {
     value: "82",
-    heading: "Invoice Status",
+    heading: "...",
     rate: "+2%",
     subtext: "more than last year",
     img: `${studentIcon}`,
@@ -113,20 +113,18 @@ const eventList = [
   {
     day: "3",
     weekday: "Wed",
-    event: "I need a yound maid who can cook at VGC",
+    event: "School Live Concert Charity Event 2021",
     color: `${primaryColors.LightPurple}`,
   },
   {
     day: "8",
     weekday: "Fri",
-    event: "I need a nany for my baby",
+    event: "Interhouse Sport",
     color: `${primaryColors.mintGreen}`,
   },
 ];
 
-// doughnut chart
-
-const AdminDashboard = ({ Top, CardWrapper, Mid, data }) => {
+const MaidDashboard = ({ Top, CardWrapper, Mid, data }) => {
   const [slot, setSlot] = useState("week");
 
   return (
@@ -148,10 +146,10 @@ const AdminDashboard = ({ Top, CardWrapper, Mid, data }) => {
         </CardWrapper>
 
         <DetailCard
-          value="Total Maids by Gender"
+          value="My Students by Gender"
           width="28rem"
           height="14rem"
-          subtext={`We have ${data[0]} Male and ${data[1]} Females`}
+          subtext={`We have ${data[0]} Male and ${data[1]} Female`}
           h1="1rem"
           p="0.7rem"
         >
@@ -162,11 +160,15 @@ const AdminDashboard = ({ Top, CardWrapper, Mid, data }) => {
       {/* Mid */}
       <Mid>
         <ChartCard width="42rem" height="20rem">
-          <AreaChart Heading="Finance" slot={slot} setSlot={setSlot} />
+          <AreaChart
+            Heading="My Students Peformance"
+            slot={slot}
+            setSlot={setSlot}
+          />
         </ChartCard>
         <DetailCard
           h1="1rem"
-          value="New Requests"
+          value="Upcoming events"
           width="15rem"
           height="20rem"
           paddingTop="1rem"
@@ -195,10 +197,8 @@ const AdminDashboard = ({ Top, CardWrapper, Mid, data }) => {
           <AppButton text=" View more" />
         </DetailCard>
       </Mid>
-
-      {/* Bottom */}
     </Container>
   );
 };
 
-export default AdminDashboard;
+export default MaidDashboard;

@@ -6,7 +6,7 @@ import { FaPen, FaTrash } from "react-icons/fa";
 
 const Container = styled.div`
   border-radius: 5px;
-  box-shadow: 0px 10px 20px -10px rgba(0, 0, 0, 0.75);
+  /* box-shadow: 0px 10px 20px -10px rgba(0, 0, 0, 0.75); */
   color: #727892;
   padding-top: 1rem;
   position: relative;
@@ -14,6 +14,11 @@ const Container = styled.div`
   max-width: 100%;
   text-align: center;
   background: ${primaryColors.White};
+  border-radius: 0.5rem;
+  border: 1px solid #e8e8e8;
+  &:hover {
+    box-shadow: 0px 10px 20px -10px rgba(0, 0, 0, 0.75);
+  }
 `;
 
 const Pro = styled.span`
@@ -43,19 +48,25 @@ const Img = styled.img`
   width: 4rem;
 `;
 
+const Bottom = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-inline: 1rem;
+  font-size: 0.7rem;
+  margin-top: 0.3rem;
+`;
+
 const Buttons = styled.div`
   display: flex;
   gap: 0.5rem;
-  padding: 0rem;
-  margin: 0rem;
-  position: absolute;
-  font-size: 0.7rem;
-  right: 1rem;
 `;
 
 const Name = styled.h1`
   font-size: 0.8rem;
   font-weight: 600;
+`;
+const ID = styled.p`
+  font-size: 0.6rem;
 `;
 
 const Text = styled.p`
@@ -65,7 +76,7 @@ const Text = styled.p`
 
 const Skills = styled.div`
   background: ${(props) =>
-    props.student ? primaryColors.mintGreen : primaryColors.LightPurple};
+    props.maid ? primaryColors.mintGreen : primaryColors.LightPurple};
   text-align: left;
   padding: 1rem;
   margin-top: 1rem;
@@ -106,24 +117,29 @@ const ProfileCard = ({
   header2,
   options1,
   options2,
-  student,
+  maid,
   role,
   name,
+  id,
   onDelete,
   onEdit,
+  onClick,
 }) => {
   return (
-    <Container>
+    <Container onClick={onClick}>
       <Pro>{role}</Pro>
       <Top>
         <Img src={img} alt="user" />
       </Top>
       <Name>{name}</Name>
-      <Buttons>
-        <Edit onClick={onEdit} />
-        <Delete onClick={onDelete} />
-      </Buttons>
-      <Skills student={student}>
+      <Bottom>
+        <ID>ID: {id}</ID>
+        <Buttons>
+          <Edit onClick={onEdit} />
+          <Delete onClick={onDelete} />
+        </Buttons>
+      </Bottom>
+      <Skills maid={maid}>
         <Lists>
           <>
             <Text>{header1}</Text>

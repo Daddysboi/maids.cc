@@ -1,35 +1,33 @@
 import axiosClient from "../../services/api";
+import axios from "axios";
 import {
-  GET_USER_BY_ID,
   UPDATE_USER_PROFILE,
-  UPDATE_USER_BANK_DETAILS,
-  UPDATE_USER_CONTACT_DETAILS,
-  UPDATE_USER_KYC_DETAILS,
   CHANGE_PASSWORD,
-  TEACHERS,
-  STUDENTS,
+  CLIENTS,
+  MAIDS,
   USERS,
   RECORDS,
 } from "../constants";
 
 export const GetUserById = async (userId) => {
   const id = JSON.parse(userId);
+  // console.log(id);
 
   // Created this so that i can later pass roles into the url for processing requests
-  var url = "users";
-  switch (user.role) {
-    case "student":
-      url = "students";
-      break;
-    case "teacher":
-      url = "teachers";
-      break;
-    case "admin":
-      url = "users";
-      break;
-  }
+  // var url = "users";
+  // switch (user.role) {
+  //   case "maids":
+  //     url = "MAIDS";
+  //     break;
+  //   case "clients":
+  //     url = "CLIENTS";
+  //     break;
+  //   case "admin":
+  //     url = "users";
+  //     break;
+  // }
 
-  const response = await axiosClient.get(`${GET_USER_BY_ID}/${id}`);
+  const response = await axios.get(`https://reqres.in/api/users/${id}`);
   return response.data;
 };
 
@@ -45,67 +43,6 @@ export const UpdateUserProfile = async ({
   return response.data;
 };
 
-export const UpdateUserBankDetails = async ({
-  userId,
-  accountName,
-  bankName,
-  accountNumber,
-  password,
-}) => {
-  const data = { userId, accountName, bankName, accountNumber, password };
-  const response = await axiosClient.patch(`${UPDATE_USER_BANK_DETAILS}`, data);
-  return response.data;
-};
-
-export const UpdateUserContactDetails = async ({
-  userId,
-  homeAddress,
-  nearestLandmark,
-  officeAddress,
-  postalCode,
-  proofOfAddress,
-}) => {
-  const data = {
-    userId,
-    homeAddress,
-    nearestLandmark,
-    officeAddress,
-    postalCode,
-    proofOfAddress,
-  };
-  const response = await axiosClient.patch(
-    `${UPDATE_USER_CONTACT_DETAILS}`,
-    data
-  );
-  return response.data;
-};
-
-export const UpdateUserKycDetails = async ({
-  headShot,
-  idType,
-  idNumber,
-  idCard,
-  nextOfKinFullName,
-  nextOfKinRelationship,
-  nextOfKinContactNumber,
-  bvn,
-  userId,
-}) => {
-  const data = {
-    headShot,
-    idType,
-    idNumber,
-    idCard,
-    nextOfKinFullName,
-    nextOfKinRelationship,
-    nextOfKinContactNumber,
-    bvn,
-    userId,
-  };
-  const response = await axiosClient.patch(`${UPDATE_USER_KYC_DETAILS}`, data);
-  return response.data;
-};
-
 export const UpdatePassword = async ({ userId, oldPassword, newPassword }) => {
   const details = { userId, oldPassword, newPassword };
   const response = await axiosClient.patch(`${CHANGE_PASSWORD}`, details);
@@ -115,11 +52,11 @@ export const UpdatePassword = async ({ userId, oldPassword, newPassword }) => {
 //create user
 export const CreateUser = async (user, editing) => {
   if (editing) {
-    if (user.role == "student") {
-      const res = await axiosClient.put(`${STUDENTS}/${user.studentId}`, user);
+    if (user.role == "maid") {
+      const res = await axiosClient.put(`${MAIDS}/${user.maidId}`, user);
       return res.data;
     } else {
-      const res = await axiosClient.put(`${TEACHERS}/${user.teacherId}`, user);
+      const res = await axiosClient.put(`${CLIENTS}/${user.clientId}`, user);
       return res.data;
     }
   }
@@ -130,47 +67,42 @@ export const CreateUser = async (user, editing) => {
   return res.data;
 };
 
-export const GetTeacherById = async (id) => {
-  const res = await axiosClient.get(`${TEACHERS}/${id}`);
+export const GetMaidById = async (id) => {
+  const res = await axiosClient.get(`${CLIENTS}/${id}`);
   return res.data;
 };
 
-export const GetStudentById = async (id) => {
-  const res = await axiosClient.get(`${STUDENTS}/${id}`);
+export const GetClientById = async (id) => {
+  const res = await axiosClient.get(`${MAIDS}/${id}`);
   return res.data;
 };
 
-export const GetTeacherRecords = async () => {
-  const res = await axiosClient.get(`${TEACHERS}/${RECORDS}`);
+export const GetMaidRecords = async () => {
+  const res = await axiosClient.get(`${CLIENTS}/${RECORDS}`);
   return res.data;
 };
 
-export const GetStudentRecords = async () => {
-  const res = await axiosClient.get(`${STUDENTS}/${RECORDS}`);
+export const GetClientRecords = async () => {
+  const res = await axiosClient.get(`${MAIDS}/${RECORDS}`);
   return res.data;
 };
 
-export const GetAllTeachers = async () => {
-  const res = await axiosClient.get(`${TEACHERS}/`);
+export const GetAllMaids = async (page) => {
+  const res = await axios.get(`https://reqres.in/api/users?page=${page}`);
   return res.data;
 };
 
-export const GetAllStudents = async () => {
-  const res = await axiosClient.get(`${STUDENTS}/`);
+export const GetAllClients = async (page) => {
+  const res = await axios.get(`https://reqres.in/api/users?page=${page}`);
   return res.data;
 };
 
-export const GetStudentsByGrade = async (subjectId) => {
-  const res = await axiosClient.get(`${STUDENTS}/${subjectId}`);
+export const DeleteClient = async (id) => {
+  const res = await axiosClient.delete(`${MAIDS}/${id}`);
   return res.data;
 };
 
-export const DeleteStudent = async (id) => {
-  const res = await axiosClient.delete(`${STUDENTS}/${id}`);
-  return res.data;
-};
-
-export const DeleteTeacher = async (id) => {
-  const res = await axiosClient.delete(`${TEACHERS}/${id}`);
+export const DeleteMaid = async (id) => {
+  const res = await axiosClient.delete(`${CLIENTS}/${id}`);
   return res.data;
 };

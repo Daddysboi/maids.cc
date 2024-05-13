@@ -112,7 +112,7 @@ const links = [
   { path: "/", page: "Pricing", id: "pricing" },
   { path: "/", page: "Products", id: "product" },
   { path: "/", page: "Contact Us", id: "contact" },
-  { path: "/", page: "FAQs" },
+  { path: "/dashboard", page: "Dashboard" },
 ];
 
 const Header = () => {
@@ -131,7 +131,7 @@ const Header = () => {
 
   return (
     <Container>
-      <Logo color="#0F0F0F" />
+      <Logo color="#436AB4" />
       {open ? (
         <MobileLinks>
           {links?.map(({ path, page }, i) => (

@@ -1,6 +1,6 @@
 import axiosClient from "../../services/api";
 
-import { LOGIN, REGISTER, SEND_OTP, RESET_PASSWORD } from "../constants";
+import { LOGIN, REGISTER, SEND_OTP } from "../constants";
 
 export const Signin = async ({ email, password }) => {
   const loginData = { email, password };
@@ -35,17 +35,5 @@ export const Register = async ({
   };
 
   const response = await axiosClient.post(`${REGISTER}`, registerData);
-  return response.data;
-};
-
-export const RequestResetPassword = async ({ email, redirectUrl }) => {
-  const details = { email, redirectUrl };
-  const response = await axiosClient.post(`${REQUEST_PASSWORD_RESET}`, details);
-  return response.data;
-};
-
-export const ResetPassword = async ({ userId, resetString, newPassword }) => {
-  const details = { userId, resetString, newPassword };
-  const response = await axiosClient.post(`${RESET_PASSWORD}`, details);
   return response.data;
 };

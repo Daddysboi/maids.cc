@@ -4,12 +4,9 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 import { primaryColors } from "../../assets/Colors";
-import Testimony from "../../components/Testimony";
 import Button from "../../components/Button";
 import { Sparkles } from "../../components/ui/sparkles";
 import { Link } from "react-scroll";
-
-import AwardImg from "../../assets/images/award.png";
 
 const Container = styled.section`
   padding-top: ${(props) => props.paddingTop || "3rem"};
@@ -103,51 +100,20 @@ const Tagline = styled.span`
   color: ${primaryColors.Purple};
 `;
 
-const Testimonycard = styled.div`
-  top: 25rem;
-  right: 2rem;
-  transform: translateX(10%);
-
-  @media only screen and (min-width: 800px) and (max-width: 875px) {
-    right: 0rem;
-    top: 30rem;
-    position: absolute;
-  }
-  @media only screen and (min-width: 876px) {
-    position: absolute;
-  }
-`;
-
 const CTA = styled.div`
   text-align: center;
   display: flex;
   gap: 1rem;
 `;
 
-const ImageContainer = styled.div`
-  display: inline-flex;
-  margin: 0;
-  @media only screen and (max-width: 800px) {
-    display: none;
-  }
-`;
-
-const Image = styled.img`
-  padding: 1rem;
-  width: 15rem;
-  background-color: #ffffff;
-  border-radius: 1rem;
-  box-shadow: 1px 1px 1px 1px rgba(0.1, 0.1, 0.1, 0.05);
-`;
-
 const Hero = ({
-  Header1 = "Management system",
-  Header2 = "for",
-  Header3 = "schools",
-  tagline = "modern ",
-  topText = "We transform the way schools ",
+  Header1 = "Get a full-time maid ",
+  Header2 = "or a",
+  Header3 = "",
+  tagline = "maid visa ",
+  topText = "Online in 5 minutes",
   midText = "",
-  bottomText = "manage thier students, grow and receive payment",
+  bottomText = "Cancel anytime",
   fontSize,
   marginBottom,
   lineHeight,
@@ -190,7 +156,6 @@ const Hero = ({
           fontWeight={fontWeight}
           className=" relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500"
         >
-          {isHero && <Tagline>AI </Tagline>}
           {Header1}
           <BrHead /> {Header2}
           <Tagline> {tagline}</Tagline>
@@ -240,17 +205,6 @@ const Hero = ({
         </CTA>
       )}
       {children}
-
-      {isHero && (
-        <ImageContainer>
-          <Image src={AwardImg} alt="AwardImg" />
-        </ImageContainer>
-      )}
-      {isHero && (
-        <Testimonycard>
-          <Testimony />
-        </Testimonycard>
-      )}
     </Container>
   );
 };

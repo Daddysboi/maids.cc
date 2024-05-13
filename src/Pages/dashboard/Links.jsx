@@ -1,39 +1,18 @@
 import { RxDashboard } from "react-icons/rx";
 import { FaBookOpen, FaHandHoldingUsd } from "react-icons/fa";
-import { MdEventAvailable } from "react-icons/md";
 import { IoMdSettings, IoIosLogOut } from "react-icons/io";
-import {
-  PiChalkboardTeacherBold,
-  PiStudentBold,
-  PiExamBold,
-} from "react-icons/pi";
 
-// STUDENT LINKS
-export const studentLinks = [
+
+// Client LINKS
+export const clientLinks = [
   {
     title: "My Dashboard",
     link: "dashboard",
     type: "link",
-    icon: <RxDashboard />,
   },
   {
-    title: "Assessments",
-    link: "student/assessment",
-    type: "link",
-  },
-  {
-    title: "Grades",
-    link: "student/grade",
-    type: "link",
-  },
-  {
-    title: "Timetable",
-    link: "student/timetable",
-    type: "link",
-  },
-  {
-    title: "Events",
-    link: "events",
+    title: "Settings",
+    link: "settings",
     type: "link",
   },
   {
@@ -43,63 +22,13 @@ export const studentLinks = [
 ];
 
 // TEACHERS LINKS
-export const teacherLinks = [
+export const maidLinks = [
   {
     title: "Dashboard",
     link: "dashboard",
     type: "link",
   },
 
-  {
-    title: "Classes",
-    link: "teacher/classes",
-    type: "link",
-  },
-  {
-    title: "Assessments",
-    link: "teacher/assessments",
-    type: "link",
-  },
-  {
-    title: "Exams",
-    link: "teacher/exams",
-    type: "link",
-  },
-  {
-    title: "Students",
-    link: "teacher/students",
-    type: "link",
-  },
-  {
-    title: "Timetable",
-    link: "teacher/timetable",
-    type: "link",
-  },
-
-  {
-    title: "Results",
-    icon: <PiExamBold />,
-    type: "sublinks",
-    sublinks: [
-      {
-        title: "Exam",
-        link: "teacher/results/exams",
-        type: "link",
-        icon: <PiExamBold />,
-      },
-      {
-        title: "Assessment",
-        link: "teacher/results/assessment",
-        type: "link",
-        icon: <PiExamBold />,
-      },
-    ],
-  },
-  {
-    title: "Events",
-    link: "events",
-    type: "link",
-  },
   {
     title: "Settings",
     link: "settings",
@@ -117,72 +46,30 @@ export const adminLinks = [
     title: "Dashboard",
     link: "dashboard",
     type: "link",
-    icon: <RxDashboard />,
   },
   {
-    title: "Teachers",
-    link: "admin/teachers",
+    title: "Maids",
+    link: "admin/maids",
     type: "link",
-    icon: <PiChalkboardTeacherBold />,
   },
   {
-    title: "Students",
-    link: "admin/students",
+    title: "Clients",
+    link: "admin/clients",
     type: "link",
-    icon: <PiStudentBold />,
   },
   {
-    title: "Classes",
-    link: "admin/classes",
+    title: "Services",
+    link: "admin/services",
     type: "link",
-    icon: <FaBookOpen />,
   },
-  {
-    title: "Timetable",
-    link: "admin/timetable",
-    type: "link",
-    icon: <FaBookOpen />,
-  },
-  {
-    title: "Results",
-    icon: <PiExamBold />,
-    type: "sublinks",
-    sublinks: [
-      {
-        title: "Exam",
-        link: "admin/results/exams",
-        type: "link",
-        icon: <PiExamBold />,
-      },
-      {
-        title: "Assessment",
-        link: "admin/results/assessments",
-        type: "link",
-        icon: <PiExamBold />,
-      },
-    ],
-  },
-  {
-    title: "Events",
-    link: "events",
-    type: "link",
-    icon: <MdEventAvailable />,
-  },
-  {
-    title: "Finance",
-    link: "finance",
-    type: "link",
-    icon: <FaHandHoldingUsd />,
-  },
+
   {
     title: "Settings",
     link: "settings",
     type: "link",
-    icon: <IoMdSettings />,
   },
   {
     title: "Log out",
     type: "button",
-    icon: <IoIosLogOut />,
   },
 ];

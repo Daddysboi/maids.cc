@@ -1,0 +1,34 @@
+[
+  {
+    "label": "Cooking",
+    "value": "Cooking"
+  },
+  {
+    "label": "Washing",
+    "value": "Washing"
+  },
+  {
+    "label": "Cleaning",
+    "value": "Cleaning"
+  },
+  {
+    "label": "Errands",
+    "value": "Errands"
+  },
+  {
+    "label": "Event Cook",
+    "value": "Event Cook"
+  },
+  {
+    "label": "Ushers",
+    "value": "Ushers"
+  },
+  {
+    "label": "Cleaners",
+    "value": "Cleaners"
+  },
+  {
+    "label": "Store Keeper",
+    "value": "Store Keeper"
+  }
+]

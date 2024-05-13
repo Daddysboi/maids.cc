@@ -14,7 +14,7 @@ import Error from "./Error";
 import AppButton from "./Button";
 import { getDateValue } from "../utils/helpers";
 
-import { classLists } from "./ClassList";
+import { services } from "./ServiceList";
 
 const Header = styled.h1`
   font-size: 1rem;
@@ -217,14 +217,14 @@ const CreateUser = ({
 
         {role === "student" && (
           <>
-            {classLists && (
+            {services && (
               <Field
                 as={AppSelectInput}
                 selectType="category"
                 name="className"
                 label="Select Class"
                 width="90%"
-                optionList={classLists}
+                optionList={services}
               />
             )}
           </>

@@ -5,9 +5,7 @@ import { FaCloudUploadAlt } from "react-icons/fa";
 
 import { useAppSelector } from "../../../redux/hooks";
 
-import AccountDetails from "./AccountDetails";
 import ProfileSettings from "./ProfileSettings";
-import Kyc from "./Kyc";
 import ContactDetails from "./ContactDetails";
 import ResetPassword from "./ResetPassword";
 
@@ -84,10 +82,6 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case "PROFILE_SETTINGS":
       return { ...state, activeSection: "profileSettings" };
-    case "ACCOUNT_DETAILS":
-      return { ...state, activeSection: "accountDetails" };
-    case "KYC":
-      return { ...state, activeSection: "kyc" };
     case "CONTACT_DETAILS":
       return { ...state, activeSection: "contactDetails" };
     case "PASSWORD_RESET":
@@ -114,22 +108,7 @@ const Settings = () => {
         >
           Profile Settings
         </TabBtn>
-        {user?.role === "teacher" && (
-          <>
-            <TabBtn
-              onClick={() => handleSectionClick("ACCOUNT_DETAILS")}
-              isActive={state.activeSection === "accountDetails"}
-            >
-              Account Details
-            </TabBtn>
-            <TabBtn
-              onClick={() => handleSectionClick("KYC")}
-              isActive={state.activeSection === "kyc"}
-            >
-              KYC
-            </TabBtn>
-          </>
-        )}
+
         <TabBtn
           onClick={() => handleSectionClick("CONTACT_DETAILS")}
           isActive={state.activeSection === "contactDetails"}
@@ -151,27 +130,6 @@ const Settings = () => {
             Button={Button}
             StyledForm={StyledForm}
             Txt={Txt}
-            FileInputContainer={FileInputContainer}
-            StyledLabel={Label}
-            Input={Input}
-            UploadButton={UploadButton}
-            FaCloudUploadAlt={FaCloudUploadAlt}
-          />
-        )}
-        {state.activeSection === "accountDetails" && (
-          <AccountDetails
-            user={user}
-            PropsContainer={PropsContainer}
-            Button={Button}
-            StyledForm={StyledForm}
-          />
-        )}
-        {state.activeSection === "kyc" && (
-          <Kyc
-            user={user}
-            PropsContainer={PropsContainer}
-            Button={Button}
-            StyledForm={StyledForm}
             FileInputContainer={FileInputContainer}
             StyledLabel={Label}
             Input={Input}

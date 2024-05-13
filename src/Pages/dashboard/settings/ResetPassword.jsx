@@ -8,8 +8,6 @@ import AppInput from "../../../components/Input";
 import Error from "../../../components/Error";
 import { updatePassword } from "../../../redux/features/userSlice";
 
-import { resetPasswordValidationSchema } from "../../ResetPassword";
-
 const ResetPassword = ({ user, PropsContainer, Button, StyledForm }) => {
   const [loading, setLoading] = useState(false);
   const dispatch = useAppDispatch();
@@ -19,6 +17,8 @@ const ResetPassword = ({ user, PropsContainer, Button, StyledForm }) => {
     newPassword: "",
     confirmPassword: "",
   };
+
+  const validationSchema = () => {};
 
   const onSubmit = (values, { resetForm }) => {
     setLoading(true);
@@ -51,7 +51,7 @@ const ResetPassword = ({ user, PropsContainer, Button, StyledForm }) => {
     <PropsContainer>
       <Formik
         initialValues={initialValues}
-        validationSchema={resetPasswordValidationSchema}
+        validationSchema={validationSchema}
         onSubmit={onSubmit}
       >
         {({ values, handleChange }) => (

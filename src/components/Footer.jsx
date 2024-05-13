@@ -89,34 +89,44 @@ const Text = styled.span`
 
 export const footerLinks = [
   {
-    title: "Users",
-    links: ["About", "FAQs", "Services", "Support"],
+    title: "Maid Services",
+    links: ["About Maids", "FAQs", "Book a Maid", "Contact Us"],
   },
   {
-    title: "Students",
-    links: ["Linkedln", "Twitter", "Instagram", "Facebook"],
+    title: "Visa Services",
+    links: [
+      "Visa Information",
+      "Apply for Visa",
+      "Visa FAQs",
+      "Contact Visa Service",
+    ],
   },
 
   {
     title: "Blog",
-    links: ["08031574374", "Gwarinpa, Abuja", "primy@gmail.com", "Nigeria"],
+    links: ["Dubai Living", "Travel Tips", "Culture", "Local Events"],
   },
   {
     title: "Pricing",
-    links: ["08031574374", "Gwarinpa, Abuja", "primy@gmail.com", "Nigeria"],
+    links: [
+      "Service Fees",
+      "Payment Options",
+      "Special Offers",
+      "Customer Reviews",
+    ],
   },
   {
-    title: "Primy",
-    links: ["About", "FAQs", "Services", "Support"],
+    title: "Dubai Maids",
+    links: ["About Dubai Maids", "Services", "Contact Us", "Join Our Team"],
   },
   {
     title: "Connect With Us",
-    links: ["Linkedln", "Twitter", "Instagram", "Facebook"],
+    links: ["LinkedIn", "Twitter", "Instagram", "Facebook"],
   },
 
   {
     title: "Partners",
-    links: ["Privacy Policy", "Terms and Condition"],
+    links: ["Privacy Policy", "Terms and Conditions"],
   },
 ];
 

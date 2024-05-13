@@ -31,8 +31,8 @@ const Guard = ({ children }) => {
   const { user } = useAppSelector((state) => state.user);
 
   const handleError = () => {
-    navigate("/login");
-    window.location.reload();
+    // navigate("/login");
+    // window.location.reload();
   };
 
   const shouldGetProfile = ![
@@ -59,9 +59,7 @@ const Guard = ({ children }) => {
   useEffect(() => {
     if (shouldGetProfile) {
       if (user) {
-        const shouldGetRole = !["admin", "teacher", "student"].includes(
-          user.role
-        );
+        const shouldGetRole = !["admin", "maid", "client"].includes(user.role);
 
         if (shouldGetRole) {
           handleError();

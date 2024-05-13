@@ -1,27 +1,24 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import {
   GetUserById,
-  UpdateUserBankDetails,
-  UpdateUserContactDetails,
   UpdateUserProfile,
-  UpdateUserKycDetails,
   UpdatePassword,
-  GetTeacherById,
-  GetStudentById,
+  GetClientById,
+  GetMaidById,
   CreateUser,
-  GetAllTeachers,
-  GetAllStudents,
-  GetStudentsByGrade,
-  DeleteTeacher,
-  DeleteStudent,
-  GetTeacherRecords,
-  GetStudentRecords,
+  GetAllClients,
+  GetAllMaids,
+  DeleteClient,
+  DeleteMaid,
+  GetClientRecords,
+  GetMaidRecords,
 } from "../services/UserServices";
 
 //Get User BY ID
 export const getUserById = createAsyncThunk("getUserById", async (userId) => {
   try {
     const resp = await GetUserById(userId);
+    console.log(resp);
     return resp;
   } catch (error) {
     throw error;
@@ -50,94 +47,6 @@ export const updateUserProfile = createAsyncThunk(
   }
 );
 
-//UPDATE USER BANK DETAILS
-export const updateUserBankDetails = createAsyncThunk(
-  "updateUserBankDetails",
-  async (
-    { userId, accountName, bankName, accountNumber, password },
-    { rejectWithValue }
-  ) => {
-    try {
-      const resp = await UpdateUserBankDetails({
-        userId,
-        accountName,
-        bankName,
-        accountNumber,
-        password,
-      });
-      return resp;
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
-  }
-);
-
-//UPDATE USER CONTACT DETAILS
-export const updateUserContactDetails = createAsyncThunk(
-  "updateUserContactDetails",
-  async (
-    {
-      userId,
-      homeAddress,
-      nearestLandmark,
-      officeAddress,
-      postalCode,
-      proofOfAddress,
-    },
-    { rejectWithValue }
-  ) => {
-    try {
-      const resp = await UpdateUserContactDetails({
-        userId,
-        homeAddress,
-        nearestLandmark,
-        officeAddress,
-        postalCode,
-        proofOfAddress,
-      });
-      return resp;
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
-  }
-);
-
-// UPDATE USER KYC DETAILS
-export const updateUserKycDetails = createAsyncThunk(
-  "updateUserKycDetails",
-  async (
-    {
-      headShot,
-      idType,
-      idNumber,
-      idCard,
-      nextOfKinFullName,
-      nextOfKinRelationship,
-      nextOfKinContactNumber,
-      bvn,
-      userId,
-    },
-    { rejectWithValue }
-  ) => {
-    try {
-      const resp = await UpdateUserKycDetails({
-        headShot,
-        idType,
-        idNumber,
-        idCard,
-        nextOfKinFullName,
-        nextOfKinRelationship,
-        nextOfKinContactNumber,
-        bvn,
-        userId,
-      });
-      return resp;
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
-  }
-);
-
 // UPDATE PASSWORD
 export const updatePassword = createAsyncThunk(
   "updatePassword",
@@ -151,12 +60,12 @@ export const updatePassword = createAsyncThunk(
   }
 );
 
-//Get Teachers Record
-export const getTeachersRecord = createAsyncThunk(
-  "getTeachersRecord",
+//Get Clients Record
+export const getClientsRecord = createAsyncThunk(
+  "getClientsRecord",
   async (_, { rejectWithValue }) => {
     try {
-      const resp = await GetTeacherRecords();
+      const resp = await GetClientRecords();
       return resp;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -164,18 +73,39 @@ export const getTeachersRecord = createAsyncThunk(
   }
 );
 
-//Get Students Record
-export const getStudentsRecord = createAsyncThunk(
-  "getStudentsRecord",
+//Get Maids Record
+export const getMaidsRecord = createAsyncThunk(
+  "getMaidsRecord",
   async (_, { rejectWithValue }) => {
     try {
-      const resp = await GetStudentRecords();
+      const resp = await GetMaidRecords();
       return resp;
     } catch (error) {
       return rejectWithValue(error.message);
     }
   }
 );
+
+export const getClientDetails = createAsyncThunk(
+  "getClientDetails",
+  async () => {
+    try {
+      const resp = await GetClientRecords();
+      return resp.data;
+    } catch (error) {
+      return;
+    }
+  }
+);
+
+export const getMaidDetails = createAsyncThunk("getMaidDetails", async () => {
+  try {
+    const resp = await GetMaidRecords();
+    return resp.data;
+  } catch (error) {
+    return;
+  }
+});
 
 //create user
 export const createUser = createAsyncThunk(
@@ -190,12 +120,12 @@ export const createUser = createAsyncThunk(
   }
 );
 
-//Get Teacher Record by Id
-export const getTeacherById = createAsyncThunk(
-  "getTeacherById",
+//Get Client by Id
+export const getClientById = createAsyncThunk(
+  "getClientById",
   async (id, { rejectWithValue }) => {
     try {
-      const resp = await GetTeacherById(id);
+      const resp = await GetClientById(id);
       return resp;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -203,12 +133,12 @@ export const getTeacherById = createAsyncThunk(
   }
 );
 
-//Get Student by Id
-export const getStudentById = createAsyncThunk(
-  "getStudentById",
+//Get Maid by Id
+export const getMaidById = createAsyncThunk(
+  "getMaidById",
   async (id, { rejectWithValue }) => {
     try {
-      const resp = await GetStudentById(id);
+      const resp = await GetMaidById(id);
       return resp;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -216,12 +146,12 @@ export const getStudentById = createAsyncThunk(
   }
 );
 
-//Get All Teachers
-export const getAllTeachers = createAsyncThunk(
-  "getAllTeachers",
-  async (_, { rejectWithValue }) => {
+//Get All Clients
+export const getAllMaids = createAsyncThunk(
+  "getAllMaids",
+  async (page, { rejectWithValue }) => {
     try {
-      const resp = await GetAllTeachers();
+      const resp = await GetAllMaids();
       return resp;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -229,12 +159,12 @@ export const getAllTeachers = createAsyncThunk(
   }
 );
 
-//Get All Students
-export const getAllStudents = createAsyncThunk(
-  "getAllStudents",
-  async (_, { rejectWithValue }) => {
+//Get All Maids
+export const getAllClients = createAsyncThunk(
+  "getAllClients",
+  async (page, { rejectWithValue }) => {
     try {
-      const resp = await GetAllStudents();
+      const resp = await GetAllClients(page);
       return resp;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -242,25 +172,12 @@ export const getAllStudents = createAsyncThunk(
   }
 );
 
-//Get Students By Course
-export const getStudentsByGrade = createAsyncThunk(
-  "getStudentsByGrade",
-  async (courseId, { rejectWithValue }) => {
-    try {
-      const resp = await GetStudentsByGrade(courseId);
-      return resp;
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
-  }
-);
-
-//Delete Teacher
-export const deleteTeacher = createAsyncThunk(
-  "deleteTeacher",
+//Delete Client
+export const deleteClient = createAsyncThunk(
+  "deleteClient",
   async (id, { rejectWithValue }) => {
     try {
-      const resp = await DeleteTeacher(id);
+      const resp = await DeleteClient(id);
       return resp;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -268,12 +185,12 @@ export const deleteTeacher = createAsyncThunk(
   }
 );
 
-//Delete Students
-export const deleteStudent = createAsyncThunk(
-  "deleteStudent",
+//Delete Maids
+export const deleteMaid = createAsyncThunk(
+  "deleteMaid",
   async (id, { rejectWithValue }) => {
     try {
-      const resp = await DeleteStudent(id);
+      const resp = await DeleteMaid(id);
       return resp;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -283,7 +200,7 @@ export const deleteStudent = createAsyncThunk(
 
 const initialState = {
   user: {
-    role: "teacher",
+    role: "admin",
     firstName: "Davido",
     lastName: "Ajayi",
   },
@@ -333,48 +250,6 @@ export const userSlice = createSlice({
         state.isLoading = false;
       });
 
-    // updateUserBankDetails actions
-    builder
-      .addCase(updateUserBankDetails.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(updateUserBankDetails.fulfilled, (state) => {
-        state.isLoading = false;
-      })
-      .addCase(updateUserBankDetails.rejected, (state) => {
-        state.isLoggedIn = false;
-        // state.user = null;
-        state.isLoading = false;
-      });
-
-    // updateUserContactDetails actions
-    builder
-      .addCase(updateUserContactDetails.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(updateUserContactDetails.fulfilled, (state) => {
-        state.isLoading = false;
-      })
-      .addCase(updateUserContactDetails.rejected, (state) => {
-        state.isLoggedIn = false;
-        // state.user = null;
-        state.isLoading = false;
-      });
-
-    // updateUserKycDetails actions
-    builder
-      .addCase(updateUserKycDetails.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(updateUserKycDetails.fulfilled, (state) => {
-        state.isLoading = false;
-      })
-      .addCase(updateUserKycDetails.rejected, (state) => {
-        state.isLoggedIn = false;
-        // state.user = null;
-        state.isLoading = false;
-      });
-
     // update password
     builder
       .addCase(updatePassword.pending, (state) => {
@@ -384,6 +259,31 @@ export const userSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(updatePassword.rejected, (state) => {
+        state.isLoggedIn = false;
+        state.isLoading = false;
+      });
+
+    builder
+      .addCase(getMaidDetails.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getMaidDetails.fulfilled, (state) => {
+        state.isLoading = false;
+      })
+      .addCase(getMaidDetails.rejected, (state) => {
+        state.isLoggedIn = false;
+        state.isLoading = false;
+      });
+
+    //Get Client Details
+    builder
+      .addCase(getClientDetails.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getClientDetails.fulfilled, (state) => {
+        state.isLoading = false;
+      })
+      .addCase(getClientDetails.rejected, (state) => {
         state.isLoggedIn = false;
         state.isLoading = false;
       });
@@ -401,80 +301,80 @@ export const userSlice = createSlice({
         state.isLoading = false;
       });
 
-    //Get Teacher Record by Id
+    //Get Client Record by Id
     builder
-      .addCase(getTeacherById.pending, (state) => {
+      .addCase(getClientById.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(getTeacherById.fulfilled, (state) => {
+      .addCase(getClientById.fulfilled, (state) => {
         state.isLoading = false;
       })
-      .addCase(getTeacherById.rejected, (state) => {
+      .addCase(getClientById.rejected, (state) => {
         state.isLoggedIn = false;
         state.isLoading = false;
       });
 
-    //Get Student Record by Id
+    //Get Maid Record by Id
     builder
-      .addCase(getStudentById.pending, (state) => {
+      .addCase(getMaidById.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(getStudentById.fulfilled, (state) => {
+      .addCase(getMaidById.fulfilled, (state) => {
         state.isLoading = false;
       })
-      .addCase(getStudentById.rejected, (state) => {
+      .addCase(getMaidById.rejected, (state) => {
         state.isLoggedIn = false;
         state.isLoading = false;
       });
 
-    //Get All Teachers
+    //Get All Maids
     builder
-      .addCase(getAllTeachers.pending, (state) => {
+      .addCase(getAllMaids.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(getAllTeachers.fulfilled, (state) => {
+      .addCase(getAllMaids.fulfilled, (state) => {
         state.isLoading = false;
       })
-      .addCase(getAllTeachers.rejected, (state) => {
+      .addCase(getAllMaids.rejected, (state) => {
         state.isLoggedIn = false;
         state.isLoading = false;
       });
 
-    //Get All Students
+    //Get All Clients
     builder
-      .addCase(getAllStudents.pending, (state) => {
+      .addCase(getAllClients.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(getAllStudents.fulfilled, (state) => {
+      .addCase(getAllClients.fulfilled, (state) => {
         state.isLoading = false;
       })
-      .addCase(getAllStudents.rejected, (state) => {
+      .addCase(getAllClients.rejected, (state) => {
         state.isLoggedIn = false;
         state.isLoading = false;
       });
 
-    //Delete Teacher
+    //Delete Client
     builder
-      .addCase(deleteTeacher.pending, (state) => {
+      .addCase(deleteClient.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(deleteTeacher.fulfilled, (state) => {
+      .addCase(deleteClient.fulfilled, (state) => {
         state.isLoading = false;
       })
-      .addCase(deleteTeacher.rejected, (state) => {
+      .addCase(deleteClient.rejected, (state) => {
         state.isLoggedIn = false;
         state.isLoading = false;
       });
 
-    //Delete Student
+    //Delete Maid
     builder
-      .addCase(deleteStudent.pending, (state) => {
+      .addCase(deleteMaid.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(deleteStudent.fulfilled, (state) => {
+      .addCase(deleteMaid.fulfilled, (state) => {
         state.isLoading = false;
       })
-      .addCase(deleteStudent.rejected, (state) => {
+      .addCase(deleteMaid.rejected, (state) => {
         state.isLoggedIn = false;
         state.isLoading = false;
       });

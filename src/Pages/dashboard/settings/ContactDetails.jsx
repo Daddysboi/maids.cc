@@ -9,7 +9,6 @@ import Error from "../../../components/Error";
 import { fileToDataUri } from "../../../components/FileUtils";
 import { useFetchUserData } from "../../../Guard";
 import { useAppDispatch } from "../../../redux/hooks";
-import { updateUserContactDetails } from "../../../redux/features/userSlice";
 
 const ImgViewer = styled.div`
   width: 60px;
@@ -54,31 +53,6 @@ const AddContact = ({
 
     setLoading(true);
     const uri = await fileToDataUri(values?.proofOfAddress);
-    dispatch(
-      updateUserContactDetails({
-        userId: user?._id,
-        homeAddress: values?.homeAddress,
-        nearestLandmark: values?.landmark,
-        postalCode: values?.postalCode,
-        proofOfAddress: uri,
-      })
-    )
-      .then((resp) => {
-        if (resp?.payload?.status !== 200) {
-          toast.error(resp?.payload?.message || "Something went wrong");
-          setLoading(false);
-          return;
-        }
-        toast.success(resp?.payload?.message || "Successfully logged in");
-        resetForm();
-        fetchUserData();
-        setImgPlaceholder(true);
-        setLoading(false);
-      })
-      .catch((error) => {
-        toast.error(error?.message || "Something went wrong");
-        setLoading(false);
-      });
   };
 
   const validationSchema = Yup.object().shape({
