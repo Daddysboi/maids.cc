@@ -244,13 +244,16 @@ export default Header;
 
 export const ScrollTo = ({ children, to, onclick }) => {
   return (
-    <div
-      onClick={() => {
-        document.getElementById(to)?.scrollIntoView({ behavior: "smooth" });
-        if (onclick) onclick();
-      }}
+    <Link
+      to={to}
+      activeClass="active"
+      spy={true}
+      smooth={true}
+      offset={-150}
+      duration={2000}
+      onClick={onclick}
     >
       {children}
-    </div>
+    </Link>
   );
 };
