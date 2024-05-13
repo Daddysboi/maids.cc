@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-import Hero from "./Hero";
-import SignUp from "./SignUp";
+import Hero from "./home/Hero";
+import SignUp from "./home/SignUp";
 
 const Container = styled.section`
   padding: 0 3rem;

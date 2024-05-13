@@ -2,7 +2,7 @@ import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 
 // Pages
-import Homepage from "./pages/home/Homepage.jsx";
+import Homepage from "./pages/Homepage.jsx";
 import Dashboard from "./pages/dashboard/Dashboard.jsx";
 import Login from "./pages/Login.jsx";
 import SignUp from "./pages/SignUp.jsx";
