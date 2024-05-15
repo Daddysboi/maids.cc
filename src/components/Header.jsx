@@ -108,10 +108,10 @@ const MobileLinks = styled.div`
 `;
 
 const links = [
-  { path: "/", page: "About", id: "about" },
-  { path: "/", page: "Pricing", id: "pricing" },
-  { path: "/", page: "Products", id: "product" },
-  { path: "/", page: "Contact Us", id: "contact" },
+  { path: "/dashboard", page: "About", id: "about" },
+  { path: "/dashboard", page: "Pricing", id: "pricing" },
+  { path: "/dashboard", page: "Products", id: "product" },
+  { path: "/dashboard", page: "Contact Us", id: "contact" },
   { path: "/dashboard", page: "Dashboard" },
 ];
 
