@@ -19,7 +19,9 @@ const Container = styled.div`
 
 const ScrollableContainer = styled.div`
   width: 100%;
+  height: 100%;
   overflow-x: auto;
+  overflow-y: hidden;
   white-space: nowrap;
   padding: 10px; /* Optional: add some padding for better look */
 
@@ -187,7 +189,7 @@ const AdminDashboard = ({ Top, CardWrapper, Mid, data }) => {
       {/* Mid */}
       <Mid>
         <ScrollableContainer>
-          <ChartCard width="60rem" height="20rem">
+          <ChartCard width="15rem" height="20rem">
             <AreaChart Heading="Finance" slot={slot} setSlot={setSlot} />
           </ChartCard>
         </ScrollableContainer>
