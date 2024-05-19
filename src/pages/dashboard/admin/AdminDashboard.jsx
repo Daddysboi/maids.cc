@@ -17,6 +17,29 @@ const Container = styled.div`
   padding-bottom: 3rem;
 `;
 
+const ScrollableContainer = styled.div`
+  width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 10px; /* Optional: add some padding for better look */
+
+  /* Optional: to hide the scrollbar */
+  ::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+`;
+
 const EventList = styled.div`
   display: flex;
   gap: 1rem;
@@ -147,23 +170,28 @@ const AdminDashboard = ({ Top, CardWrapper, Mid, data }) => {
           ))}
         </CardWrapper>
 
-        <DetailCard
-          value="Total Maids by Gender"
-          width="28rem"
-          height="14rem"
-          subtext={`We have ${data[0]} Male and ${data[1]} Females`}
-          h1="1rem"
-          p="0.7rem"
-        >
-          <DoughnutChart data={data} labelA="Male" labelB="Female" />
-        </DetailCard>
+        <ScrollableContainer>
+          <DetailCard
+            value="Total Maids by Gender"
+            width="28rem"
+            height="14rem"
+            subtext={`We have ${data[0]} Male and ${data[1]} Females`}
+            h1="1rem"
+            p="0.7rem"
+          >
+            <DoughnutChart data={data} labelA="Male" labelB="Female" />
+          </DetailCard>
+        </ScrollableContainer>
       </Top>
 
       {/* Mid */}
       <Mid>
-        <ChartCard width="42rem" height="20rem">
-          <AreaChart Heading="Finance" slot={slot} setSlot={setSlot} />
-        </ChartCard>
+        <ScrollableContainer>
+          <ChartCard width="60rem" height="20rem">
+            <AreaChart Heading="Finance" slot={slot} setSlot={setSlot} />
+          </ChartCard>
+        </ScrollableContainer>
+
         <DetailCard
           h1="1rem"
           value="New Requests"
