@@ -14,6 +14,9 @@ import { primaryColors } from "../../../assets/Colors";
 
 const Container = styled.div`
   margin-top: 2rem;
+  @media only screen and (max-width: 580px) {
+    display: none;
+  }
 `;
 
 const HeaderContainer = styled.div`

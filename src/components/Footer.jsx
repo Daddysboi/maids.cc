@@ -123,11 +123,6 @@ export const footerLinks = [
     title: "Connect With Us",
     links: ["LinkedIn", "Twitter", "Instagram", "Facebook"],
   },
-
-  {
-    title: "Partners",
-    links: ["Privacy Policy", "Terms and Conditions"],
-  },
 ];
 
 const privacy = {

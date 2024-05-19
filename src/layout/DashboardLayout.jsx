@@ -25,6 +25,7 @@ const Wrapper = styled.div`
   padding: 5rem 0 3rem 20%;
   min-height: 100vh;
   min-width: 100vw;
+  overflow-y: hidden;
   @media only screen and (min-width: 320px) and (max-width: 480px) {
     padding-inline: ${(props) => (props.open ? "32% 0.5rem" : "3rem")};
   }

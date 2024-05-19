@@ -64,7 +64,7 @@ const BrHead = styled.br`
 const SubHead = styled.div`
   font-weight: 500;
   font-size: 1.2rem;
-  line-height: ${(props) => props.lineHeightSub || "1rem"};
+  line-height: 2rem;
   max-width: 60rem;
   margin: 0 auto;
 
@@ -87,14 +87,6 @@ const SubHead = styled.div`
   }
 `;
 
-const BrSubHead = styled.br`
-  /* display: none; */
-
-  // Desktops, large screens
-  @media only screen and (max-width: 760px) {
-    display: none;
-  }
-`;
 const Tagline = styled.span`
   color: ${primaryColors.Purple};
 `;
@@ -111,7 +103,6 @@ const Hero = ({
   Header3 = "",
   tagline = "maid visa ",
   topText = "Online in 5 minutes",
-  midText = "",
   bottomText = "Cancel anytime",
   fontSize,
   marginBottom,
@@ -158,10 +149,7 @@ const Hero = ({
         </Header>
         <SubHead lineHeightSub={lineHeightSub}>
           {topText}
-          <BrSubHead />
-          {midText}
-
-          <BrSubHead />
+          <br />
           {bottomText}
         </SubHead>
       </HeaderContainer>
